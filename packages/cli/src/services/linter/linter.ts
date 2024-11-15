@@ -63,7 +63,16 @@ const createDocument = async (
   identifier: string | number,
   opts: IFileReadOptions,
   source: string,
-): Promise<Document<unknown, Parsers.YamlParserResult<unknown>>> => {
+  parser: ILintConfig["parser"] = "Yaml"
+) => {
+  if (parser === "Json") {
+    if (typeof identifier === 'string') {
+      return new Document(await readParsable(identifier, opts), Parsers.Json, identifier);
+    }
+
+    return new Document(await readFileDescriptor(identifier, opts), Parsers.Json, source);
+  }
+
   if (typeof identifier === 'string') {
     return new Document(await readParsable(identifier, opts), Parsers.Yaml, identifier);
   }
