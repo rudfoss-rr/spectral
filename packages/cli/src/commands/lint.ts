@@ -182,6 +182,7 @@ const lintCommand: CommandModule = {
       encoding,
       ignoreUnknownFormat,
       failOnUnmatchedGlobs,
+      parser,
       ...config
     } = args as unknown as ILintConfig & {
       documents: Array<number | string>;
@@ -198,6 +199,7 @@ const lintCommand: CommandModule = {
         failOnUnmatchedGlobs,
         ruleset,
         stdinFilepath,
+        parser,
         ...pick<Partial<ILintConfig>, keyof ILintConfig>(config, ['verbose', 'quiet', 'resolver']),
       });
 
