@@ -33,4 +33,4 @@ Options:
   -v, --verbose                  increase verbosity  [boolean]
   -q, --quiet                    no logging - output only  [boolean]
 
-Unknown arguments: i, p
+Unknown argument: i
