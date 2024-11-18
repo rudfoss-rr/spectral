@@ -44,7 +44,12 @@ export async function lint(documents: Array<number | string>, flags: ILintConfig
       console.info(`Linting ${targetUri}`);
     }
 
-    const document = await createDocument(targetUri, { encoding: flags.encoding }, flags.stdinFilepath ?? '<STDIN>', flags.parser);
+    const document = await createDocument(
+      targetUri,
+      { encoding: flags.encoding },
+      flags.stdinFilepath ?? '<STDIN>',
+      flags.parser,
+    );
 
     results.push(
       ...(await spectral.run(document, {
